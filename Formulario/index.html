@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Formulario de Dirección</title>
+    <style>
+        .small-container {
+            max-width: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container small-container mt-3">
+        <h1 class="text-center">Formulario de Dirección</h1>
+
+        <form id="direccionForm">
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <select class="form-control" id="pais" onchange="cargarEstados()">
+                    <option value="" selected disabled>Seleccione un país</option>
+                    <option value="Mexico">México</option>
+                    <option value="EstadosUnidos">Estados Unidos</option>
+                    <option value="Argentina">Argentina</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="estado" id="estadoLabel">Estado:</label>
+                <select class="form-control" id="estado" onchange="cargarMunicipios()"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="municipio" id="municipioLabel">Municipio:</label>
+                <select class="form-control" id="municipio" onchange="cargarLocalidades()"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="localidad" id="localidadLabel">Localidad:</label>
+                <select class="form-control" id="localidad"></select>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" onclick="mostrarDatos()">Enviar</button>
+        </form>
+
+        <div id="datosSeleccionados" class="mt-3"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/forumulario.js"></script>
+</body>
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch((error) => {
+          console.error('Error al registrar el Service Worker:', error);
+        });
+    }
+  </script>
+  
+</html>
